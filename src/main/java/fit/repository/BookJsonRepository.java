@@ -7,10 +7,13 @@ import java.util.List;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
+import org.springframework.stereotype.Repository;
+
 import fit.domain.Book;
 import fit.util.FileReader;
 
-public class BookJsonRepository {
+//@Repository
+public class BookJsonRepository implements BookRepository {
   public List<Book> findAll() {
     var books = new ArrayList<Book>();
     

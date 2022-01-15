@@ -23,7 +23,7 @@ public class FileReader {
 
   public static String read(String filename) throws IOException {
     var clazz = App.class;
-    var is = clazz.getResourceAsStream(String.format("resources/%s", filename));
+    var is = clazz.getResourceAsStream(String.format("/%s", filename));
     String content = readFromInputStream(is);
 
     return content;
