@@ -36,6 +36,7 @@
 
         <!-- Names the annotated entity class -->
         <mapping class="fit.domain.Book"/>
+        <mapping class="fit.domain.Author"/>
 
     </session-factory>
 

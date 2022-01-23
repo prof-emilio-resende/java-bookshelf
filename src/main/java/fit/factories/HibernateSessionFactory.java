@@ -34,7 +34,7 @@ public class HibernateSessionFactory implements FactoryBean<HibernateSessionBean
       // building the SessionFactory
       // so destroy it manually.
       StandardServiceRegistryBuilder.destroy(registry);
-
+      System.out.println(e.getMessage());
       return null;
     }
   }

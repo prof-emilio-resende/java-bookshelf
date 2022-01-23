@@ -1,8 +1,11 @@
 package fit.domain;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 
 import org.hibernate.annotations.GenericGenerator;
 
@@ -14,9 +17,23 @@ public class Book {
   @GeneratedValue(generator="increment")
   @GenericGenerator(name="increment", strategy="increment")
   private Long id;
+  private Long authorId;
+  @ManyToOne(cascade = CascadeType.ALL)
+  @JoinColumn(referencedColumnName = "id")
+  private Author author;
 
   public Book() {
     super();
+  }
+
+  public Book(String title) {
+    super();
+    this.title = title;
+  }
+
+  @Override
+  public String toString() {
+    return String.format("[title: %s, by: %s]", this.getTitle(), this.getAuthor() != null ? this.getAuthor() : "");
   }
 
   public Long getId() {
@@ -27,9 +44,20 @@ public class Book {
     this.id = id;
   }
 
-  public Book(String title) {
-    super();
-    this.title = title;
+  public Long getAuthorId() {
+    return this.authorId;
+  }
+  
+  public void setAuthorId(Long authorId) {
+    this.authorId = authorId;
+  }
+
+  public Author getAuthor() {
+    return author;
+  }
+  
+  public void setAuthor(Author author) {
+    this.author = author;
   }
 
   public String getTitle() {
