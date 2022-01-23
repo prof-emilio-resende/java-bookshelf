@@ -7,8 +7,6 @@ import java.util.List;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
-import org.springframework.stereotype.Repository;
-
 import fit.domain.Book;
 import fit.util.FileReader;
 
@@ -25,5 +23,10 @@ public class BookJsonRepository implements BookRepository {
     }
 
     return books;
+  }
+
+  @Override
+  public void create(Book book) {
+    System.out.println("Hey, I didn't mean to disappoint you... but this is read-only from Json");
   }  
 }

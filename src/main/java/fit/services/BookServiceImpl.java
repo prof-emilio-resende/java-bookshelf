@@ -16,4 +16,9 @@ public class BookServiceImpl implements BookService {
   public List<Book> findAll() {
     return repo.findAll();
   }
+
+  @Override
+  public void create(Book book) {
+    repo.create(book);
+  }
 }
