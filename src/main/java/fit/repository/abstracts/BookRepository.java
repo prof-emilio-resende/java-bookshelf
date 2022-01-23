@@ -1,4 +1,4 @@
-package fit.repository;
+package fit.repository.abstracts;
 
 import java.util.List;
 

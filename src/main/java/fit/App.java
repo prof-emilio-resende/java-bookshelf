@@ -7,6 +7,7 @@ import org.springframework.context.support.GenericApplicationContext;
 
 import fit.domain.Author;
 import fit.domain.Book;
+import fit.repository.abstracts.AuthorRepository;
 import fit.services.BookService;
 
 /**
@@ -17,6 +18,11 @@ public class App
 {
     private static void run(GenericApplicationContext appContext) {
         var svc = appContext.getBean(BookService.class);
+        var repo = appContext.getBean(AuthorRepository.class);
+
+        var authorWithoutBooks = new Author("Beginner Author");
+        repo.create(authorWithoutBooks);
+        
         var author = new Author("Author's");
         var book = new Book("The newwwww book!");
 
@@ -29,6 +35,12 @@ public class App
             System.out.println(b);
             System.out.println(b.getTitle());
             System.out.println(b.getId());
+        });
+
+        var allAuthors = repo.findAll();
+        allAuthors.stream().forEach(a -> {
+            System.out.println(a.toString());
+            a.getBooks().stream().forEach(System.out::println);
         });
     }
 

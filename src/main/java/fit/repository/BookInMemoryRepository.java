@@ -3,6 +3,7 @@ package fit.repository;
 import java.util.List;
 
 import fit.domain.Book;
+import fit.repository.abstracts.BookRepository;
 
 //@Repository
 public class BookInMemoryRepository implements BookRepository {

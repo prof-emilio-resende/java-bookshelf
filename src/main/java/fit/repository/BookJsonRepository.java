@@ -8,6 +8,7 @@ import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
 import fit.domain.Book;
+import fit.repository.abstracts.BookRepository;
 import fit.util.FileReader;
 
 //@Repository

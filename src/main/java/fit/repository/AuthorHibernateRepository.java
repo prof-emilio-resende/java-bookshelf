@@ -7,18 +7,18 @@ import javax.persistence.TypedQuery;
 
 import org.springframework.stereotype.Repository;
 
-import fit.domain.Book;
-import fit.repository.abstracts.BookRepository;
+import fit.domain.Author;
+import fit.repository.abstracts.AuthorRepository;
 
 @Repository
-public class BookHibernateRepository extends BaseRepository implements BookRepository {
-  
+public class AuthorHibernateRepository extends BaseRepository implements AuthorRepository {
+
   @Override
-  public List<Book> findAll() {
-    List<Book> result = new ArrayList<Book>();
+  public List<Author> findAll() {
+    List<Author> result = new ArrayList<Author>();
     try {
       var session = prepareToQuery();
-      TypedQuery<Book> query = session.createQuery("from Book", Book.class);
+      TypedQuery<Author> query = session.createQuery("from Author a left join a.books", Author.class);
       var list = query.getResultList();
 
       session.close();
@@ -32,11 +32,11 @@ public class BookHibernateRepository extends BaseRepository implements BookRepos
   }
 
   @Override
-  public void create(Book book) {
+  public void create(Author author) {
     try {
       var session = prepareToQuery();
       var transaction = session.beginTransaction();
-      session.save(book);
+      session.save(author);
       transaction.commit();
       session.close();
     } catch (Exception e) {
@@ -44,5 +44,5 @@ public class BookHibernateRepository extends BaseRepository implements BookRepos
       System.out.println("Can't communicate with hibernate...");
     }
   }
-
+  
 }

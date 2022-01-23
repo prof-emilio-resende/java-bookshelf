@@ -6,7 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import fit.domain.Book;
-import fit.repository.BookRepository;
+import fit.repository.abstracts.BookRepository;
 
 @Service
 public class BookServiceImpl implements BookService {
