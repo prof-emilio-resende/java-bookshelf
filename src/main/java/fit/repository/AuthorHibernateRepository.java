@@ -18,7 +18,7 @@ public class AuthorHibernateRepository extends BaseRepository implements AuthorR
     List<Author> result = new ArrayList<Author>();
     try {
       var session = prepareToQuery();
-      TypedQuery<Author> query = session.createQuery("from Author a left join a.books", Author.class);
+      TypedQuery<Author> query = session.createQuery("from Author a left join fetch a.books", Author.class);
       var list = query.getResultList();
 
       session.close();
